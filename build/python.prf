@@ -3,11 +3,13 @@
 # Change this variable to your python version (2.6, 2.7, 3.3, ...)
 win32:PYTHON_VERSION=26
 unix:PYTHON_VERSION=2.6
+macx:PYTHON_VERSION=2.7
 
 macx {
   # for macx you need to have the Python development kit installed as framework
-  INCLUDEPATH += /System/Library/Frameworks/Python.framework/Headers
-  LIBS += -F/System/Library/Frameworks -framework Python
+  INCLUDEPATH += $$system(python$${PYTHON_VERSION}-config --includes)
+  QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --cflags)
+  LIBS += $$system(python$${PYTHON_VERSION}-config --ldflags)
 } else:win32 {
   # for windows install a Python development kit or build Python yourself from the sources
   # Make sure that you set the environment variable PYTHON_PATH to point to your

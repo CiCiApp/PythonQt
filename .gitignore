@@ -1,0 +1,9 @@
+.DS_Store
+Makefile*
+*.stash
+*.user
+*.o
+*moc_*.cpp
+*qrc_*.cpp
+lib
+generator/pythonqt_generator
